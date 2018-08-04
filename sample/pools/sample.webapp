@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apps>
+    <web-application>
+        <name>root</name>
+        <vhost>*</vhost>
+        <vport>80</vport>
+        <vpath>/</vpath>
+        <path>/var/www/sample-app/</path>
+    </web-application>
+</apps>

@@ -1,0 +1,11 @@
+server {
+         listen   80;
+         root /var/www/sample-app/;
+
+         location / {
+                 index index.html index.htm default.aspx Default.aspx;
+                 fastcgi_index Default.aspx;
+                 fastcgi_pass webapp:9000;
+                 include /etc/nginx/fastcgi_params;
+         }
+ }
