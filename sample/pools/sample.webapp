@@ -3,7 +3,7 @@
     <web-application>
         <name>root</name>
         <vhost>*</vhost>
-        <vport>80</vport>
+        <vport>-1</vport>
         <vpath>/</vpath>
         <path>/var/www/sample-app/</path>
     </web-application>
