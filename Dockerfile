@@ -1,4 +1,4 @@
-FROM mono:slim
+FROM mono:latest
 
 LABEL maintainer="Marcos Junior <junalmeida@gmail.com>"
 
