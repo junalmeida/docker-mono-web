@@ -1,6 +1,6 @@
 # Mono Web Docker image
 
-This image provides the latest Docker release of the [Mono Project](http://www.mono-project.com/) to host ASP.NET Full Framework application under nginx or apache.   
+This image provides the latest Docker release of the [Mono Project](http://www.mono-project.com/) to host ASP.NET Full Framework application under nginx or another server under proxy.   
   
 [![](https://images.microbadger.com/badges/image/junalmeida/mono-web.svg)](https://microbadger.com/images/junalmeida/mono-web "Get your own image badge on microbadger.com")  
 

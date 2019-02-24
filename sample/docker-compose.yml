@@ -1,33 +1,12 @@
 version: '3'
 services:
-  nginx:
-    container_name: nginx
-    image: nginx:latest
-    ports:
-      - "80:80"
-    restart: always
-    volumes:
-      - ./nginx/sample.template:/etc/nginx/conf.d/sample.template
-      - ./nginx/fastcgi_params:/etc/nginx/fastcgi_params
-
-    depends_on:
-      - webapp
-    networks: 
-      - mynetwork
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/sample.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
   webapp:
     container_name: "webapp"
     image: junalmeida/mono-web:latest
-    #build: ../
+    build: ../
     restart: always
+    ports:
+      - "80:80"
     volumes:
       - ./pools:/etc/mono/pools
-      - ./dist:/var/www/sample-app/
-    networks: 
-      mynetwork:
-        aliases:
-          - webapp
-
-networks:
-  mynetwork:
-
+      - ./dist:/var/www/sample-app

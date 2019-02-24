@@ -3,13 +3,17 @@ FROM mono:latest
 LABEL maintainer="Marcos Junior <junalmeida@gmail.com>"
 
 RUN apt-get update \
-  && apt-get install -y iproute2 binutils curl mono-devel ca-certificates-mono fsharp mono-vbnc nuget referenceassemblies-pcl mono-fastcgi-server4 \
-  && rm -rf /var/lib/apt/lists/* /tmp/*
+  && apt-get install -y \
+      iproute2 supervisor ca-certificates-mono fsharp mono-vbnc nuget \
+      referenceassemblies-pcl mono-fastcgi-server4 nginx \
+  && rm -rf /var/lib/apt/lists/* /tmp/* \
+  && echo "daemon off;" | cat - /etc/nginx/nginx.conf > temp && mv temp /etc/nginx/nginx.conf \
+  && sed -i -e 's/www-data/root/g' /etc/nginx/nginx.conf
 
-RUN echo "#!/bin/sh\nfastcgi-mono-server4 --appconfigdir=/etc/mono/pools --socket=tcp:\$(ip -4 addr show eth0| grep -Po 'inet \K[\d.]+'):9000 --printlog" > /opt/mono-fastcgi
+COPY ./fastcgi_params /etc/nginx/fastcgi_params
+COPY ./nginx.default.conf /etc/nginx/sites-available/default
+COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ 
+EXPOSE 80
 
-RUN chmod +x /opt/mono-fastcgi
-
-EXPOSE 9000
-
-ENTRYPOINT [ "/opt/mono-fastcgi" ]
+ENTRYPOINT [ "/usr/bin/supervisord" ]
