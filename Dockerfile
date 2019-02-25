@@ -10,9 +10,8 @@ RUN apt-get update \
   && echo "daemon off;" | cat - /etc/nginx/nginx.conf > temp && mv temp /etc/nginx/nginx.conf \
   && sed -i -e 's/www-data/root/g' /etc/nginx/nginx.conf
 
-COPY ./fastcgi_params /etc/nginx/fastcgi_params
-COPY ./nginx.default.conf /etc/nginx/sites-available/default
-COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY nginx/ /etc/nginx/
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
  
 EXPOSE 80
 
