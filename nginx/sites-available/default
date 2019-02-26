@@ -2,6 +2,8 @@ server {
          listen   80;
          access_log   /var/log/nginx/mono-fastcgi.log;
          root /var/www/;
+         server_tokens off;
+         more_clear_headers Server X-AspNet-Version;
 
          location / {
                  index index.html index.htm default.aspx Default.aspx;
