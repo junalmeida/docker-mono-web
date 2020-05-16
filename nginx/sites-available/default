@@ -7,7 +7,7 @@ server {
 
          location / {
                  index index.html index.htm default.aspx Default.aspx;
-                 fastcgi_index Default.aspx;
+                 fastcgi_index /;
                  fastcgi_pass unix:/var/run/mono-fastcgi.sock;
                  include /etc/nginx/fastcgi_params;
          }
