@@ -1,3 +1,8 @@
+> [!IMPORTANT]  
+> This project is archived given the progress of the multi platform .NET, that already provides official docker images with web support.
+> Take a look at official .NET docker offerings.
+
+
 # Mono Web Docker image
 
 This image provides the latest Docker release of the [Mono Project](http://www.mono-project.com/) to host ASP.NET Full Framework application under nginx or another server under proxy.   
